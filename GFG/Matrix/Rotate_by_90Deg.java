@@ -61,29 +61,31 @@ import java.lang.*;
 
 class Driverclass
 {
-    public static void main (String[] args)throws IOException {
-    BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
-    int t= Integer.parseInt(read.readLine());
-    
-    while(t-- > 0)
+    public static void main (String[] args)throws IOException 
     {
-        int n = Integer.parseInt(read.readLine());
-        int a[][] = new int[n][n];
-        String st[] = read.readLine().trim().split("\\s+");
-        int k = 0;
-        for(int i = 0; i < n; i++)
+        BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+        int t= Integer.parseInt(read.readLine());
+    
+        while(t-- > 0)
         {
-            for(int j = 0; j < n; j++)
-                a[i][j] = Integer.parseInt(st[k++]);
-        }
-        new Rotation().rotateby90(a, n);
-        for(int i = 0; i < n; i++)
-        {
-            for(int j = 0; j < n; j++)
-                System.out.print(a[i][j] + " ");
-        }
-        System.out.println();
-    }    
+            int n = Integer.parseInt(read.readLine());
+            int a[][] = new int[n][n];
+            String st[] = read.readLine().trim().split("\\s+");
+            int k = 0;
+            for(int i = 0; i < n; i++)
+            {
+                for(int j = 0; j < n; j++)
+                    a[i][j] = Integer.parseInt(st[k++]);
+            }
+            new Rotation().rotateby90(a, n);
+            for(int i = 0; i < n; i++)
+            {
+                for(int j = 0; j < n; j++)
+                    System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        } 
+    }   
 }
 
 
