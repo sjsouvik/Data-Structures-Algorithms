@@ -108,7 +108,7 @@ class ReverseLL
             current = next;
         }
         
-        head = prev;
+        head = prev; //as prev holds the last element of the list which will become the head of the reversed list
         
         return head;
     }
