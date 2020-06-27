@@ -38,9 +38,14 @@ Input:
 10 20
 30 40 50
 10 20
+8 5 1
+19 24 28 8 12 14 5 45
+31 27 11 41 45
+42
 Output:
 5
 10
+42
 
 Explanation:
 Testcase 1: The point of intersection of two linked list is 5, means both of them get linked (intersects) with each other at node whose value is 5.
