@@ -48,7 +48,6 @@ Output : 0
 
 **********************************************************************Solution*****************************************************************************/
 
-import java.io.*;
 import java.util.*;
 
 class GFG {
@@ -60,6 +59,7 @@ class GFG {
 		while(t-->0)
 		{
 		  int n=sc.nextInt();
+		  
 		  long a[]=new long[n];
 		  long b[]=new long[n];
 		  
@@ -80,24 +80,40 @@ class GFG {
 
 public static boolean check(long a[],long b[],int n)
 {    
-    Set<Long> s = new HashSet<Long>();
+    Map<Long, Long> m = new HashMap<Long, Long>();
     
-    //Adding all elements of one of the arrays(array 'a') into a HashSet
-    for(int i = 0; i < n; i++)
-        s.add(a[i]);
-    
-    //then, traversing the other array and checking whether the array elements are present in the set or not
+    //Adding all elements of one of the arrays(array 'a') into a HashMap with its frequencies
     for(int i = 0; i < n; i++)
     {
-        if(!s.contains(b[i]))
+        if(!m.containsKey(a[i])) //if array element is not present in the map then add it as key with count 1 as value
+            m.put(a[i], (long)1);
+        else //if it's already present then increase the count by retrieving the value using key and again add it
+        {
+            long c = m.get(a[i]);
+            m.put(a[i], ++c);
+        }
+    }
+    
+    //then, traversing the other array and checking whether the array elements are present in the map or not
+    for(int i = 0; i < n; i++)
+    {
+        //if an element of other array doesn't appear in map then we can say arrays are not equal
+        if(!m.containsKey(b[i]))
             return false;
+        
+        // If an element of arr2[] appears more times than it appears in arr1[] then it'll get value as 0 since we'll decrease the count for each element once we find it in map    
+        if(m.get(b[i]) == 0)
+            return false;
+        
+        //decrease the count of element once we get it in map
+        long c = m.get(b[i]);
+        m.put(b[i], --c);
     }
         
     return true;
 }
 
-
-}  
+}   
 
 
 
