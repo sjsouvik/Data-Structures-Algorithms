@@ -156,7 +156,7 @@ class Tree
         if(a == null && b == null)
             return true;
         
-        if(a.data != b.data)
+        if(a == null || b == null || a.data != b.data)
             return false;
             
         boolean left = areMirror(a.left, b.right);
