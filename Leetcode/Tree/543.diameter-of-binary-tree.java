@@ -32,12 +32,14 @@ Note: The length of path between two nodes is represented by the number of edges
  * }
  */
 
-// diameter = number of nodes on the longest path between two end nodes = leftHeight + rightHeight + 1
+// diameter = number of nodes on the longest path between two end nodes = Max(leftHeight + rightHeight + 1)
 // here, we are counting number of edges on the longest path between two end nodes, that's why we won't add 1 with left and right subtree's height 
-class Solution {
+class Solution 
+{
     int diameter = 0;
     
-    public int diameterOfBinaryTree(TreeNode root) {
+    public int diameterOfBinaryTree(TreeNode root) 
+    {
         int heightOfTheTree = height(root);
         
         return diameter;
