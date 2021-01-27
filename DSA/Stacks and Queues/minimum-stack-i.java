@@ -86,81 +86,68 @@ Sample Output:-
 import java.io.*;
 import java.util.*;
 
-public class Main 
-{
-    public static class MinStack 
-    {
+public class Main {
+    public static class MinStack {
         Stack < Integer > allData;
         Stack < Integer > minData;
 
-        public MinStack() 
-        {
+        public MinStack() {
             allData = new Stack < > ();
             minData = new Stack < > (); //peek of this stack will hold the minimum data so need to update this whenever we get any item which is less than the peek of this stack
         }
 
-        int size() 
-        {
-            return allData.size(); 
+        int size() {
+            return allData.size();
         }
 
-        void push(int val) 
-        {
+        void push(int val) {
             // all elements will be pushed into allData stack. if the current element is less than or equal to the peek of minData stack or, minData stack is empty then only will push item into stack  
             allData.push(val);
-            
-            if(minData.size() == 0 || val <= minData.peek())
+
+            if (minData.size() == 0 || val <= min())
                 minData.push(val);
         }
 
-        int pop() 
-        {
+        int pop() {
             // will definitely pop from allData stack but if peek of both the stacks are same then need to pop from both of the stacks
-            if(size() == 0)
-            {
+            if (size() == 0) {
                 System.out.println("Stack underflow");
                 return -1;
             }
-                
-            if(allData.peek() == minData.peek())
+
+            if (allData.peek() == min())
                 minData.pop();
-            
+
             return allData.pop();
         }
 
-        int top() 
-        {
+        int top() {
             //if allData stack is empty then return -1 else return top/peek of it
-            if(size() == 0)
-            {
+            if (size() == 0) {
                 System.out.println("Stack underflow");
                 return -1;
             }
-                
+
             return allData.peek();
         }
 
-        int min() 
-        {
+        int min() {
             //if minData stack is empty then return -1 else return top/peek of it
-            if(minData.isEmpty())
-            {
+            if (minData.isEmpty()) {
                 System.out.println("Stack underflow");
                 return -1;
             }
-            
+
             return minData.peek();
         }
     }
 
-    public static void main(String[] args) throws Exception 
-    {
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         MinStack st = new MinStack();
 
         String str = br.readLine();
-        while (str.equals("quit") == false) 
-        {
+        while (str.equals("quit") == false) {
             if (str.startsWith("push")) {
                 int val = Integer.parseInt(str.split(" ")[1]);
                 st.push(val);
