@@ -73,7 +73,10 @@ import java.util.*;
 
 public class Main 
 {
-    //We have made the add() operation inefficient and remove() efficient to convert stack into queue. The idea is to add all items from main stack to helper stack before adding the new item to it.Now, add the new item into the main stack and then add all items from helper stack to main stack again - this way the newly added item will be at bottom or end of the main stack which makes it to work like a queue.
+    /* We have made the add() operation inefficient and remove() efficient to convert stack into queue. The idea is 
+    to add all items from main stack to helper stack before adding the new item to it.Now, add the new item into the 
+    main stack and then add all items from helper stack to main stack again - this way the newly added item will be 
+    at bottom or end of the main stack which makes it to work like a queue. */
     public static class StackToQueueAdapter 
     {
         Stack < Integer > mainS;
