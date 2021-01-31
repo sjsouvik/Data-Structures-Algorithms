@@ -54,7 +54,10 @@ public class Main {
         System.out.println(LIS(a));
     }
 
-    //LIS - Longest Increasing Subsequence. This method will return the length of LIS
+    //Time complexity - O(n^2)
+    /* LIS - Longest Increasing Subsequence. This method will return the length of LIS. The idea is to find 
+    length of increasing subsequence for each element ending at that element. Now, the max of all the 
+    lengths of increasing subsequence would be the length of LIS. */ 
     static int LIS(int a[]) {
         int dp[] = new int[a.length];
         int lengthOfLIS = 1;
@@ -62,6 +65,10 @@ public class Main {
         for (int i = 0; i < dp.length; i++) {
             int max = 0;
 
+            /* this part is to find the max length of increasing subsequence's containing previous elements 
+            which are less than or equal to the current element. Then, by adding current element we would 
+            get increasing subsequence ending at current element and the length would be (max length of 
+            increasing subsequence's containing previous elements + 1). */
             for (int j = 0; j < i; j++) {
                 if (a[i] >= a[j])
                     max = Integer.max(max, dp[j]);
