@@ -50,7 +50,7 @@ public class Main
         
         System.out.println(LCSTabulation(a, b, dp)); //Tabulation solution
         
-        //to fill the 2D array with -1 as will use this to store answer of sub-problems in memization
+        //to fill the 2D array with -1 as will use this to store answer of sub-problems in memoization
         // for(int i = 0; i < dp.length; i++)
         //     Arrays.fill(dp[i], - 1);
         
@@ -59,7 +59,10 @@ public class Main
 
     //LCS - Longest Common Subsequence
     //Recursive solution
-    /* We are traversing both the strings from end and checking whether characters are matching or not. If it matches then we'll check for the next character from end, else we'll make recursive calls one with entire 1st string and 2nd string leaving the last checked character and the other recursive call with entire 2nd string and 1st string leaving the last checked character */
+    /* We are traversing both the strings from end and checking whether characters are matching or not. 
+    If it matches then we'll check for the next character from end, else we'll make recursive calls one 
+    with entire 1st string and 2nd string leaving the last checked character and the other recursive call 
+    with entire 2nd string and 1st string leaving the last checked character */
     static int LCSRecursive(String a, String b, int m, int n)
     {
         if(m == 0 || n == 0)
