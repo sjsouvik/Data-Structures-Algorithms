@@ -36,3 +36,17 @@ var intersection = function(nums1, nums2) {
     
     return res;
 };
+
+//Optimized solution: using 1 Set() only
+var findIntersection = function(nums1, nums2) {
+    const set = new Set(nums1), intersection = [];
+    
+    for(const item of nums2){
+        if(set.has(item)){
+            intersection.push(item);
+            set.delete(item); // deleting the item from set as nums2 might contain duplicates
+        }
+    }
+    
+    return intersection;
+};
