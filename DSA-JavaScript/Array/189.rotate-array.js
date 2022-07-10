@@ -22,9 +22,9 @@ rotate 2 steps to the right: [3,99,-1,-100]
 
 Constraints:
 
-1 <= nums.length <= 105
--231 <= nums[i] <= 231 - 1
-0 <= k <= 105
+1 <= nums.length <= 10^5
+-2^31 <= nums[i] <= 2^31 - 1
+0 <= k <= 10^5
 
 **********************************************************************Solution*****************************************************/
 
@@ -33,7 +33,33 @@ Constraints:
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
- var rotate = function(nums, k) {        
+
+// Time complexity - O(n), aux space - O(n)
+function rotate(nums, k){
+    const numsLength = nums.length, temp = [];
+    
+    k = k % numsLength; // to handle the case where k >= numsLength
+    
+    if(k){
+        //store last k items in an array
+        for(let i = numsLength - k; i < numsLength; i++){
+            temp.push(nums[i]);
+        }
+
+        //shift other items(first n - k items) by k steps to the right
+        for(let i = numsLength - k - 1; i >= 0; i--){
+            nums[i + k] = nums[i];
+        }
+
+        //replace first (n - k) items with the items stored in temp array
+        for(let i = 0; i < k; i++){
+            nums[i] = temp[i];
+        } 
+    }
+}
+
+// The best & tricky solution - time complexity: O(n), aux space: O(1)
+ var rotateBest = function(nums, k) {        
     function reverse(start, end){
         let temp;
         while(start < end){
