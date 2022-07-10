@@ -36,22 +36,20 @@ Constraints:
 
 // Time complexity - O(n), aux space - O(n)
 function rotate(nums, k){
-    const numsLength = nums.length, temp = [];
+    const numsLength = nums.length;
     
     k = k % numsLength; // to handle the case where k >= numsLength
     
     if(k){
         //store last k items in an array
-        for(let i = numsLength - k; i < numsLength; i++){
-            temp.push(nums[i]);
-        }
+        const temp = nums.slice(numsLength - k);
 
         //shift other items(first n - k items) by k steps to the right
         for(let i = numsLength - k - 1; i >= 0; i--){
             nums[i + k] = nums[i];
         }
 
-        //replace first (n - k) items with the items stored in temp array
+        //replace first k items with the items stored in temp array
         for(let i = 0; i < k; i++){
             nums[i] = temp[i];
         } 
