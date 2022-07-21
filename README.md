@@ -27,3 +27,7 @@ Currently working on problem solving skill and keeping all solutions here so tha
 - [Recursion](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Recursion)
 - [Backtracking](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/Amazon-SDE-Test-Series/DSA/Backtracking)
 - [Dynamic Programming](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/DSA/Dynamic%20Programming)
+
+## Support
+
+Give it a ⭐ if you like it.
