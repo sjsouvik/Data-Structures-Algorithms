@@ -1,38 +1,40 @@
 //Queue and its operations
 class Queue {
-  constructor() {
-    this.items = [];
-  }
+	constructor() {
+		this.items = [];
+		this.front = 0;
+		this.rear = 0;
+	}
 
-  add(val) {
-    this.items.unshift(val);
-  }
+	add(val) {
+		this.items[this.rear++] = val;		
+	}
 
-  isEmpty() {
-    return this.items.length === 0;
-  }
+	isEmpty() {
+		return this.front === this.rear;
+	}
 
-  peek() {
-    if (this.isEmpty()) {
-      return "Underflow! Queue is empty";
-    }
+	peek() {
+		if (this.isEmpty()) {
+			return "Underflow! Queue is empty";
+		}
 
-    return this.items[this.items.length - 1];
-  }
+		return this.items[this.front];
+	}
 
-  remove() {
-    if (this.isEmpty()) {
-      return "Underflow! Queue is empty";
-    }
+	remove() {
+		if (this.isEmpty()) {
+			return "Underflow! Queue is empty";
+		}
 
-    return this.items.pop();
-  }
+		return this.items[this.front++];
+	}
 
-  printQueue() {
-    for (let i = this.items.length - 1; i >= 0; i--) {
-      console.log(this.items[i]);
-    }
-  }
+	printQueue() {
+		for (let i = this.front; i < this.rear; i++) {
+			console.log(this.items[i]);
+		}
+	}
 }
 
 console.log("**************Queue operations**************");
@@ -41,7 +43,7 @@ console.log(queue.peek());
 queue.add(50);
 queue.add(60);
 queue.printQueue();
-console.log("Peek element of the queue is ", queue.peek());
+console.log("Peek element of the queue is", queue.peek());
 console.log(queue.remove());
 console.log(queue.remove());
 console.log(queue.remove());
