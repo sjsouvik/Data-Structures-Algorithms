@@ -24,6 +24,7 @@ class Queue {
 
 	remove() {
 		if (this.isEmpty()) {
+      this.front = this.rear = 0;      
 			return "Underflow! Queue is empty";
 		}
 
