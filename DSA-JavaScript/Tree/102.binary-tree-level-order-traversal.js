@@ -46,12 +46,12 @@ var levelOrder = function(root) {
     queue.push(root);
     
     while(queue.length){
-        const nodesPerLevel = [];
-        let widthOfLevel = queue.length;
+        const nodesOfCurrentLevel = [];
+        let widthOfCurrentLevel = queue.length;
         
-        while(widthOfLevel-- > 0){
+        while(widthOfCurrentLevel-- > 0){
             const removedNode = queue.shift();
-            nodesPerLevel.push(removedNode.val);
+            nodesOfCurrentLevel.push(removedNode.val);
             
             if(removedNode.left){
                 queue.push(removedNode.left)
@@ -62,7 +62,7 @@ var levelOrder = function(root) {
             }
         }
         
-        res.push(nodesPerLevel);
+        res.push(nodesOfCurrentLevel);
     }
     
     return res;
