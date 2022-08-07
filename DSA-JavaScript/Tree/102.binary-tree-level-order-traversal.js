@@ -36,7 +36,7 @@ The number of nodes in the tree is in the range [0, 2000].
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var levelOrder = function(root) {        
+function levelOrder(root) {        
     const queue = [], res = [];
     
     if(!root){
@@ -66,4 +66,4 @@ var levelOrder = function(root) {
     }
     
     return res;
-};
+}
