@@ -36,7 +36,7 @@ The number of nodes in the tree is in the range [0, 2000].
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var zigzagLevelOrder = function(root) {
+function zigzagLevelOrder(root) {
     const stack1 = [], stack2 = [], res = [];
     
     if(!root){
@@ -90,4 +90,4 @@ var zigzagLevelOrder = function(root) {
     }
     
     return res;
-};
+}
