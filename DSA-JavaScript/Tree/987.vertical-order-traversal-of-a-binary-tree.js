@@ -66,26 +66,26 @@ const verticalTraversal = (root) => {
     
     queue.push({node: root, hd: 0});
     
-    let removedNode, size;
+    let size;
     while(queue.length){
         size = queue.length;
-        queue = queue.sort((a, b) => a.node.val - b.node.val);
+        queue = queue.sort((a, b) => a.node.val - b.node.val)
         
         while(size-- > 0){
-            removedNode = queue.shift();
+            const {node, hd} = queue.shift();
             
-            if(map.has(removedNode.hd)){
-                map.get(removedNode.hd).push(removedNode.node.val);
+            if(map.has(hd)){
+                map.get(hd).push(node.val);
             }else{
-                map.set(removedNode.hd, [removedNode.node.val]);
+                map.set(hd, [node.val]);
             }
 
-            if(removedNode.node.left){
-                queue.push({node: removedNode.node.left, hd: removedNode.hd - 1});
+            if(node.left){
+                queue.push({node: node.left, hd: hd - 1});
             }
 
-            if(removedNode.node.right){
-                queue.push({node: removedNode.node.right, hd: removedNode.hd + 1});
+            if(node.right){
+                queue.push({node: node.right, hd: hd + 1});
             }
         }        
     }
