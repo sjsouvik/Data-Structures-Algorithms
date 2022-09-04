@@ -39,7 +39,13 @@ inorder is guaranteed to be the inorder traversal of the tree.
  * @return {TreeNode}
  */
 const buildTree = function(preorder, inorder) {
-    let index = 0;        
+    let index = 0;
+    
+    const inorderMap = new Map();
+    
+    for(let i = 0; i < inorder.length; i++){
+        inorderMap.set(inorder[i], i);
+    }
     
     const findIndexInInorder = (start, end, value) => {        
         for(let i = start; i <= end; i++){
@@ -60,7 +66,9 @@ const buildTree = function(preorder, inorder) {
         
         const root = new TreeNode(value);
         
-        const position = findIndexInInorder(start, end, value);
+        // const position = findIndexInInorder(start, end, value); // this would take O(n) time for each node and overall complexity becomes O(n^2). A map can be used to reduce the search time to O(1) and overall complexity to O(n).
+        
+        const position = inorderMap.get(value);
         
         root.left = utilBuildTree(start, position - 1);
         root.right = utilBuildTree(position + 1, end);
