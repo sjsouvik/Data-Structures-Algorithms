@@ -17,6 +17,7 @@ Currently working on problem solving skill and keeping all solutions here so tha
 - [Queue and Dequeue](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Queue%20and%20Dequeue)
 - [Linked List](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Linked%20List)
 - [Hashing](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Hashing)
+- [String](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/DSA-JavaScript/String)
 - [Tree](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Tree)
 - [Binary Search Tree](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Binary%20Search%20Tree)
 - [Heap](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Heap)
