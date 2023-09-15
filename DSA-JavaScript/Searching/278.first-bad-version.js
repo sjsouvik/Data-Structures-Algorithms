@@ -44,7 +44,7 @@ Constraints:
  * @param {function} isBadVersion()
  * @return {function}
  */
-var solution = function (isBadVersion) {
+const solution = function (isBadVersion) {
   /**
    * @param {integer} n Total versions
    * @return {integer} The first bad version
@@ -52,23 +52,22 @@ var solution = function (isBadVersion) {
   return function (n) {
     let first = 1,
       last = n,
-      mid;
+      mid,
+      result = -1;
 
     while (first <= last) {
       mid = Math.floor(first + (last - first) / 2);
 
       const isBad = isBadVersion(mid);
-      if (isBad && (mid === 1 || !isBadVersion(mid - 1))) {
-        return mid;
-      }
 
       if (!isBad) {
         first = mid + 1;
       } else {
+        result = mid;
         last = mid - 1;
       }
     }
 
-    return -1;
+    return result;
   };
 };
