@@ -41,13 +41,13 @@ Constraints:
  * @return {number[]}
  */
 
-/* we need to use deque here since in deque removing item from last and first can be done in O(1) operation 
-and these 2 operations are required to solve the problem efficiently */
-
 /*
-if array size is 'n', window size is 'k' then there'll be total (n - k + 1) windows 
+we need to use deque here since in deque removing item from last and first can be done in O(1) operation 
+and these 2 operations are required to solve the problem efficiently
 
-The idea is to keep a dequeu of size 'k' where we'll keep all the elements in descending order, to do that whenever 
+if the array size is 'n', window size is 'k' then there'll be total (n - k + 1) windows 
+
+The idea is to keep a deque of size 'k' where we'll keep all the elements in descending order, to do that whenever 
 the current element will be greater than the last item of the deque, we'll remove that item until we get a greater 
 item than the current one. After that, we'll add the current item into the deque. With this approach, the front 
 of the deque will always hold the max element of the current window.
