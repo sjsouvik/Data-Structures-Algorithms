@@ -14,7 +14,7 @@ Currently working on problem solving skill and keeping all solutions here so tha
 - [Arrays](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Arrays)
 - [Matrix](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Matrix)
 - [Stack](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Stack)
-- [Queue and Dequeue](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Queue%20and%20Dequeue)
+- [Queue and Deque](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Queue%20and%20Dequeue)
 - [Linked List](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Linked%20List)
 - [Hashing](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Hashing)
 - [String](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/DSA-JavaScript/String)
