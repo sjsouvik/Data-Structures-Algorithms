@@ -130,7 +130,7 @@ size 'k' and remove that.
 
 We could solve this problem using min heap as well but in that case, we had to build the heap with the difference of 
 all the items and then we could extract the first 'k' items with min difference. Time complexity(nlogn to build the 
-heap + klogk to extract first 'k' items from the heap = O(nlogn)) would be more in this approach.
+heap + klogn to extract first 'k' items from the heap = O(nlogn)) would be more in this approach.
 
 */
 

@@ -115,27 +115,31 @@ and add the item into the heap only if the item is greater than the root or, min
 removing the min item from the heap. In this way, the heap will only contain the 'k' largest items at the 
 end where the root of the heap will be the kth largest item.
 
-Time complexity: O(logk) to build the heap and O((n - k) * (2logk)) operations to extract root or min 
-item from the heap and insert new item into the heap.
+Time complexity: O(klogk) to build the heap and O((n - k) * (2logk)) operations to extract root or min 
+item from the heap and insert new item into the heap ~= O(nlogk).
 
 Another approach: we could solve this using max heap also by adding all items into the max heap and then 
 removing 'k' items from the heap to get the kth largest item in the array. 
 
-Time complexity would be O(logn) to build the heap and O(k * logn) operations to extract the 'k' items from the heap.
+Time complexity would be O(nlogn) to build the heap and O(k * logn) operations to extract the 'k' items 
+from the heap ~= O(nlogn).
 
-O(logn + klogn) > O(logk + 2(n - k)logk)
+O(nlogn + klogn) > O(klogk + 2(n - k)logk)
 
 if k === n, O(logn + nlogn) > O(logn)
 
 */
 
+// Time complexity: O(klogk + 2(n - k)logk) = O(nlogk)
 const findKthLargest = function (nums, k) {
   const minHeap = new MinHeap();
 
+  // O(klogk) to build the heap with 'k' items
   for (let i = 0; i < k; i++) {
     minHeap.insert(nums[i]);
   }
 
+  // (n - k) * (2logk) = 2(n - k)logk to extract and insert new item into the heap
   for (let i = k; i < nums.length; i++) {
     if (nums[i] > minHeap.getMin()) {
       minHeap.extractMin();
