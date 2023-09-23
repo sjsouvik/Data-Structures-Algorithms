@@ -34,8 +34,9 @@ arr is sorted in ascending order.
  * @return {number[]}
  */
 
-class MaxHeap {
-  constructor() {
+class PriorityQ {
+  constructor(compare) {
+    this.compare = compare;
     this.items = [];
   }
 
@@ -58,61 +59,61 @@ class MaxHeap {
     ];
   }
 
-  getMax() {
+  peek() {
     return this.items[0];
   }
 
-  insert(item) {
+  size() {
+    return this.items.length;
+  }
+
+  add(item) {
     this.items.push(item);
 
     let i = this.items.length - 1;
-    while (
-      i !== 0 &&
-      this.items[i].difference > this.items[this.parent(i)].difference
-    ) {
+    while (i !== 0 && this.compare(this.items[this.parent(i)], this.items[i])) {
       this.swap(i, this.parent(i));
       i = this.parent(i);
     }
   }
 
-  maxHeapify(index) {
+  heapify(index) {
     const left = this.left(index),
-      right = this.right(index),
-      heapSize = this.items.length;
-    let greatest = index;
+      right = this.right(index);
+    let rootIndex = index;
 
     if (
-      left < heapSize &&
-      this.items[left].difference > this.items[greatest].difference
+      left < this.size() &&
+      this.compare(this.items[rootIndex], this.items[left])
     ) {
-      greatest = left;
+      rootIndex = left;
     }
 
     if (
-      right < heapSize &&
-      this.items[right].difference > this.items[greatest].difference
+      right < this.size() &&
+      this.compare(this.items[rootIndex], this.items[right])
     ) {
-      greatest = right;
+      rootIndex = right;
     }
 
-    if (greatest !== index) {
-      this.swap(greatest, index);
-      this.maxHeapify(greatest);
+    if (rootIndex !== index) {
+      this.swap(rootIndex, index);
+      this.heapify(rootIndex);
     }
   }
 
-  extractMax() {
-    if (this.items.length === 0) {
+  poll() {
+    if (this.size() === 0) {
       return;
     }
 
-    if (this.items.length === 1) {
+    if (this.size() === 1) {
       return this.items.pop();
     }
 
     this.swap(0, this.items.length - 1);
     this.items.pop();
-    this.maxHeapify(0);
+    this.heapify(0);
   }
 }
 
@@ -122,7 +123,7 @@ This problem is about finding 'K' smallest items based on the difference between
 
 We'll use max heap here and push the abs(item - x) of first 'k' items into the heap. And for the rest of the array items, 
 we'll compare the top of the heap with the absolute difference for the current item, if the top of the heap has the 
-greater value, then we'll remove that and insert the current item into the heap. In this way, at the end, we'll have 
+greater value, then we'll remove that and add the current item into the heap. In this way, at the end, we'll have 
 the 'k' closest items in the heap.
 
 We used max heap here so that we can easily get access of the item with the largest difference for subarray of 
@@ -136,18 +137,18 @@ heap + klogn to extract first 'k' items from the heap = O(nlogn)) would be more 
 
 // Time complexity: O(klogk + 2(n - k)logk + klogk) = O(nlogk)
 const findClosestElements = function (arr, k, x) {
-  const maxHeap = new MaxHeap();
+  const maxHeap = new PriorityQ((a, b) => a.difference - b.difference < 0);
 
   // O(klogk) to build the heap with 'k' items
   for (let i = 0; i < k; i++) {
-    maxHeap.insert({ difference: Math.abs(arr[i] - x), index: i });
+    maxHeap.add({ difference: Math.abs(arr[i] - x), index: i });
   }
 
-  // (n - k) * (2logk) = 2(n - k)logk to extract and insert new item into the heap
+  // (n - k) * (2logk) = 2(n - k)logk to remove and add new item into the heap
   for (let i = k; i < arr.length; i++) {
-    if (maxHeap.getMax().difference > Math.abs(arr[i] - x)) {
-      maxHeap.extractMax();
-      maxHeap.insert({ difference: Math.abs(arr[i] - x), index: i });
+    if (maxHeap.peek().difference > Math.abs(arr[i] - x)) {
+      maxHeap.poll();
+      maxHeap.add({ difference: Math.abs(arr[i] - x), index: i });
     }
   }
 
