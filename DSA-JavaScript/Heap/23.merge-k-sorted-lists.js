@@ -40,41 +40,22 @@ The sum of lists[i].length will not exceed 104.
 
 **************************************************************Solution*******************************************************/
 
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode[]} lists
- * @return {ListNode}
- */
-
-class MinHeap {
-  constructor() {
+class PriorityQ {
+  constructor(compare) {
+    this.compare = compare;
     this.items = [];
   }
 
-  parent(index) {
-    return Math.floor((index - 1) / 2);
+  parent(i) {
+    return Math.floor((i - 1) / 2);
   }
 
-  left(index) {
-    return 2 * index + 1;
+  left(i) {
+    return 2 * i + 1;
   }
 
-  right(index) {
-    return 2 * index + 2;
-  }
-
-  getMin() {
-    return this.items[0];
-  }
-
-  isEmpty() {
-    return this.items.length === 0;
+  right(i) {
+    return 2 * i + 2;
   }
 
   swap(index1, index2) {
@@ -84,56 +65,62 @@ class MinHeap {
     ];
   }
 
-  //Time complexity: O(height of the binary heap) = O(log n) since we are swapping the elements along the height of the binary heap
-  insert(item) {
-    if (item === null) {
-      return;
-    }
+  peek() {
+    return this.items[0];
+  }
 
+  size() {
+    return this.items.length;
+  }
+
+  add(item) {
     this.items.push(item);
 
     let i = this.items.length - 1;
-    while (i !== 0 && this.items[i].val < this.items[this.parent(i)].val) {
+    while (i !== 0 && this.compare(this.items[this.parent(i)], this.items[i])) {
       this.swap(i, this.parent(i));
       i = this.parent(i);
     }
   }
 
-  //Time complexity: O(log n) as we are swapping the elements along the height of the binary heap
-  minHeapify(index) {
-    const left = this.left(index);
-    const right = this.right(index);
-    const heapSize = this.items.length;
-    let smallest = index;
+  heapify(index) {
+    const left = this.left(index),
+      right = this.right(index);
+    let rootIndex = index;
 
-    if (left < heapSize && this.items[left].val < this.items[smallest].val) {
-      smallest = left;
+    if (
+      left < this.size() &&
+      this.compare(this.items[rootIndex], this.items[left])
+    ) {
+      rootIndex = left;
     }
 
-    if (right < heapSize && this.items[right].val < this.items[smallest].val) {
-      smallest = right;
+    if (
+      right < this.size() &&
+      this.compare(this.items[rootIndex], this.items[right])
+    ) {
+      rootIndex = right;
     }
 
-    if (smallest !== index) {
-      this.swap(index, smallest);
-      this.minHeapify(smallest);
+    if (rootIndex !== index) {
+      this.swap(rootIndex, index);
+      this.heapify(rootIndex);
     }
   }
 
-  extractMin() {
-    if (this.items.length === 0) {
+  poll() {
+    if (this.size() === 0) {
       return;
     }
 
-    if (this.items.length === 1) {
+    if (this.size() === 1) {
       return this.items.pop();
     }
 
     this.swap(0, this.items.length - 1);
-    const minItem = this.items.pop();
-    this.minHeapify(0);
-
-    return minItem;
+    const rootItem = this.items.pop();
+    this.heapify(0);
+    return rootItem;
   }
 }
 
@@ -148,17 +135,31 @@ The idea is to create a min heap and insert the 1st item of all the arrays into 
 lists array here contains the head of the given sorted lists
 
 */
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode[]} lists
+ * @return {ListNode}
+ */
 const mergeKLists = function (lists) {
-  const minHeap = new MinHeap();
+  const minHeap = new PriorityQ((a, b) => a.val - b.val > 0);
 
   for (const list of lists) {
-    minHeap.insert(list);
+    if (list !== null) {
+      minHeap.add(list);
+    }
   }
 
   let output = null,
     last = null;
-  while (!minHeap.isEmpty()) {
-    const removedNode = minHeap.extractMin();
+  while (minHeap.size() !== 0) {
+    const removedNode = minHeap.poll();
 
     if (output === null) {
       output = last = removedNode;
@@ -168,7 +169,7 @@ const mergeKLists = function (lists) {
     }
 
     if (removedNode.next) {
-      minHeap.insert(removedNode.next);
+      minHeap.add(removedNode.next);
     }
   }
 
