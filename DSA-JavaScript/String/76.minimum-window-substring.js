@@ -49,41 +49,36 @@ const minWindow = function (s, t) {
     obj[char] = (obj[char] || 0) + 1;
   }
 
-  let j = 0,
+  let left = 0,
     matchCount = 0,
     result = "";
   const sObj = {};
 
-  /* Start matching the characters of the pattern with the characters of the string and increment the 
-  matchCount if a character matches. */
-  for (let i = 0; i < s.length; i++) {
-    const char = s[i];
+  /* Start matching the characters of the pattern with the characters of the string and 
+  increment the matchCount if a character matches. */
+  for (let right = 0; right < s.length; right++) {
+    const char = s[right];
     sObj[char] = (sObj[char] || 0) + 1;
     if (sObj[char] <= obj[char]) {
       matchCount++;
     }
 
-    /* Check if (matchCount == length of the given pattern), this means a window(or, substring) is found with 
-    all the characters of the given pattern. */
+    /* Check if (matchCount == length of the given pattern), this means a window(or, substring) is found 
+    with all the characters of the given pattern. */
     if (matchCount === t.length) {
       /* minimize the length of the window by removing extra characters from the beginning of the current window. */
-      let charToRemove = s[j];
+      let charToRemove = s[left];
       while (
         obj[charToRemove] === undefined ||
         sObj[charToRemove] > obj[charToRemove]
       ) {
-        if (sObj[charToRemove] === 1) {
-          delete sObj[charToRemove];
-        } else {
-          sObj[charToRemove] = sObj[charToRemove] - 1;
-        }
-
-        j++;
-        charToRemove = s[j];
+        sObj[charToRemove] = sObj[charToRemove] - 1;
+        left++;
+        charToRemove = s[left];
       }
 
       // update the possible result if the length of possible result is less than the current result
-      const possibleRes = s.substring(j, i + 1);
+      const possibleRes = s.substring(left, right + 1);
       if (result.length === 0 || possibleRes.length < result.length) {
         result = possibleRes;
       }
