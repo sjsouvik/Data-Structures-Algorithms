@@ -54,7 +54,7 @@ const evalRPN = function (tokens) {
   const stack = [];
 
   for (const token of tokens) {
-    if (isNaN(Number(token))) {
+    if (isNaN(token)) {
       const a = stack.pop();
       const b = stack.pop();
       const result = operate(b, a, token);
