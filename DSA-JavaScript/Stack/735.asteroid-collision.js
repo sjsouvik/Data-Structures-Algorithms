@@ -41,27 +41,25 @@ asteroids[i] != 0
 const asteroidCollision = function (asteroids) {
   const stack = [];
 
-  for (let i = 0; i < asteroids.length; i++) {
-    const currentItem = asteroids[i];
-
-    if (currentItem > 0) {
-      stack.push(currentItem);
+  for (const asteroid of asteroids) {
+    if (asteroid > 0) {
+      stack.push(asteroid);
     } else {
       /* If the top value of the stack is positive and smaller than the absolute value of the current item, 
       then pop the item since that will collide with the current item and will be destroyed */
       while (
         stack.length &&
         stack[stack.length - 1] > 0 &&
-        stack[stack.length - 1] < Math.abs(currentItem)
+        stack[stack.length - 1] < Math.abs(asteroid)
       ) {
         stack.pop();
       }
 
       /* if the top of the stack is equal to the absolute value of the current item, then pop the item */
-      if (stack.length && stack[stack.length - 1] === Math.abs(currentItem)) {
+      if (stack.length && stack[stack.length - 1] === Math.abs(asteroid)) {
         stack.pop();
       } else if (stack.length === 0 || stack[stack.length - 1] < 0) {
-        stack.push(currentItem);
+        stack.push(asteroid);
       }
     }
   }
