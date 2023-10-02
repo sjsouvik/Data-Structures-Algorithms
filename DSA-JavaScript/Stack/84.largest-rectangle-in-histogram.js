@@ -28,7 +28,9 @@ Constraints:
  * @return {number}
  */
 
-/* The idea is to keep index of smaller item on the left and right for each item, so that we can get the largest possible width for each given height. Now the trick is, if there's no smaller element on the left and right of an item, then keep -1 and the length of the array as the index of smaller element for that item respectively. */
+/* The idea is to keep index of smaller item on the left and right for each item, so that we can get the 
+largest possible width for each given height. Now the trick is, if there's no smaller element on the left 
+and right of an item, then keep -1 and the length of the array as the index of smaller element for that item respectively. */
 const getPrevSmaller = (arr) => {
   const stack = [],
     result = [];
@@ -69,7 +71,7 @@ const largestRectangleArea = function (heights) {
   for (let i = 0; i < heights.length; i++) {
     maxArea = Math.max(
       maxArea,
-      heights[i] * (nextSmallers[i] - prevSmallers[i] - 1)
+      heights[i] * (nextSmallers[i] - (prevSmallers[i] + 1))
     );
   }
 
