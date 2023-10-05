@@ -34,7 +34,8 @@ const transpose = function (matrix) {
   const rows = matrix.length,
     columns = matrix[0].length;
 
-  /* dimension of a transpose of a matrix with dimension (m * n) (where m, n = number of rows, columns in the matrix respectively) would be (n * m) */
+  /* dimension of a transpose of a matrix with dimension (m * n) 
+  (where m, n = number of rows, columns in the matrix respectively) would be (n * m) */
   const result = [];
 
   for (let i = 0; i < columns; i++) {
