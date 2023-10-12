@@ -49,7 +49,6 @@ const change = function (amount, coins) {
   const cache = {};
 
   const util = (amount, n = coins.length) => {
-    const key = `${amount}_${n}`;
     if (amount === 0) {
       return 1;
     }
@@ -58,6 +57,7 @@ const change = function (amount, coins) {
       return 0;
     }
 
+    const key = `${amount}_${n}`;
     if (cache[key] !== undefined) {
       return cache[key];
     }
@@ -65,6 +65,38 @@ const change = function (amount, coins) {
     const total = util(amount - coins[n - 1], n) + util(amount, n - 1);
     cache[key] = total;
     return total;
+  };
+
+  return util(amount);
+};
+
+// another way to solve this problem
+
+const anotherChange = function (amount, coins) {
+  const cache = {};
+
+  const util = (amount, n = coins.length) => {
+    if (amount === 0) {
+      return 1;
+    }
+
+    if (n === 0) {
+      return 0;
+    }
+
+    const key = `${amount}_${n}`;
+    if (cache[key] !== undefined) {
+      return cache[key];
+    }
+
+    /* if the current coin is not greater than the amount, then only we can include that to get the required amount */
+    if (coins[n - 1] <= amount) {
+      cache[key] = util(amount - coins[n - 1], n) + util(amount, n - 1);
+    } else {
+      cache[key] = util(amount, n - 1);
+    }
+
+    return cache[key];
   };
 
   return util(amount);
