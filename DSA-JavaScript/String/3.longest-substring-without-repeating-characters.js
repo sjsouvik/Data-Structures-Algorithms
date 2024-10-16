@@ -44,7 +44,16 @@ const lengthOfLongestSubstring = function (s) {
 
   for (let j = 0; j < s.length; j++) {
     const asciiOfCurrentChar = s.charCodeAt(j);
-    i = Math.max(i, lastIndex[asciiOfCurrentChar] + 1);
+
+    /* found a repeating character that means need to update the value of left 
+      pointer 'i' only if the character was seen earlier in the current window */
+    if (
+      lastIndex[asciiOfCurrentChar] !== -1 &&
+      lastIndex[asciiOfCurrentChar] >= i
+    ) {
+      i = lastIndex[asciiOfCurrentChar] + 1;
+    }
+
     result = Math.max(result, j - i + 1);
     lastIndex[asciiOfCurrentChar] = j;
   }
