@@ -32,8 +32,7 @@ const isAnagram = function (s, t) {
     return false;
   }
 
-  const count = new Array(26);
-  count.fill(0);
+  const count = Array(26).fill(0);
 
   // ASCII value of 'a' is 97 and as all characters are in lowercase, we're subtracting ASCII value of 'a' to get the index to store the count of the character. e.g. for character 'a' index would be 0
   for (let i = 0; i < s.length; i++) {
@@ -41,7 +40,7 @@ const isAnagram = function (s, t) {
     count[t.charCodeAt(i) - 97]--;
   }
 
-  return !count.find((c) => c !== 0);
+  return count.every((c) => c === 0);
 };
 
 // Solution 2:
