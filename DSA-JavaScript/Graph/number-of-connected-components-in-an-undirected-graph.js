@@ -32,6 +32,8 @@ Constraints:
 
 ********************************************************Solution**************************************************/
 
+/* Time complexity: O(V + E), space complexity: O(V + E) where V is the number of vertices and 
+E is the number of edges in the graph */
 function countComponents(n, edges) {
   const adjacencyList = Array(n)
     .fill(null)
