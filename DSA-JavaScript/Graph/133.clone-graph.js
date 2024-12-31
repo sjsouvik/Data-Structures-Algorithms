@@ -74,6 +74,11 @@ The Graph is connected and all nodes can be visited starting from the given node
  *
  */
 
+/*
+Time complexity: O(V + E), space complexity: O(V) where V is the number of vertices and 
+E is the number of edges
+*/
+
 function cloneGraph(node) {
   /*
     // DFS solution
