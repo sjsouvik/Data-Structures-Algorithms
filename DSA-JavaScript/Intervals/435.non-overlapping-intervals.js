@@ -33,7 +33,12 @@ intervals[i].length == 2
 -5 * 10^4 <= starti < endi <= 5 * 10^4
 
 ********************************************************Solution***************************************************/
+/*
 
+Time complexity: O(nlogn)
+Space complexity: O(1) or O(n) depending on the sorting algorithm.
+
+*/
 function eraseOverlapIntervals(intervals) {
   intervals.sort((a, b) => a[0] - b[0]);
 
