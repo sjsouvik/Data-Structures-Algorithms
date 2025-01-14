@@ -12,6 +12,7 @@ Currently working on problem solving skill and keeping all solutions here so tha
 ## Topics
 
 - [Arrays](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Arrays)
+- [Intervals](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/main/DSA-JavaScript/Intervals)
 - [Matrix](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Matrix)
 - [Stack](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Stack)
 - [Queue and Deque](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Queue%20and%20Dequeue)
@@ -20,11 +21,11 @@ Currently working on problem solving skill and keeping all solutions here so tha
 - [String](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/DSA-JavaScript/String)
 - [Tree](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Tree)
 - [Binary Search Tree](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Binary%20Search%20Tree)
-- [Heap](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Heap)
-- [Graph](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/Amazon-SDE-Test-Series/DSA/Graph)
+- [Heap](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/main/DSA-JavaScript/Heap)
+- [Graph](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/main/DSA-JavaScript/Graph)
 - [Searching](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Searching)
-- [Two-Pointer Algorithm](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Two-Pointer%20Algorithm)
-- [Prefix sum & Sliding window](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Prefix%20Sum%20%26%20Sliding%20Window)
+- [Two-Pointer Algorithm](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/main/DSA-JavaScript/Two%20Pointers)
+- [Prefix sum & Sliding window](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/main/DSA-JavaScript/Sliding%20Window%20%26%20Prefix%20Sum)
 - [Recursion](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Recursion)
 - [Backtracking](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/Amazon-SDE-Test-Series/DSA/Backtracking)
 - [Dynamic Programming](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/DSA/Dynamic%20Programming)
