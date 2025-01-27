@@ -36,7 +36,7 @@ Constraints:
 1 <= key.length, value.length <= 100
 key and value consist of lowercase English letters and digits.
 1 <= timestamp <= 10^7
-All the timestamps timestamp of set are strictly increasing.
+All the timestamps `timestamp` of `set` are strictly increasing.
 At most 2 * 10^5 calls will be made to set and get.
 
 ********************************************************Solution**************************************************/
@@ -66,7 +66,8 @@ class TimeMap {
       end = values.length - 1,
       mid;
 
-    /* All the timestamps `timestamp` of `set` are strictly increasing - that's why could apply binary search to solve it.*/
+    /* All the timestamps `timestamp` of `set` are strictly increasing - that's why we could apply 
+    binary search to solve it.*/
     while (start <= end) {
       mid = start + Math.floor((end - start) / 2);
 
