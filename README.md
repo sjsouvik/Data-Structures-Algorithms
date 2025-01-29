@@ -27,7 +27,7 @@ Currently working on problem solving skill and keeping all solutions here so tha
 - [Two-Pointer Algorithm](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/main/DSA-JavaScript/Two%20Pointers)
 - [Prefix sum & Sliding window](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/main/DSA-JavaScript/Sliding%20Window%20%26%20Prefix%20Sum)
 - [Recursion](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/GFG/Recursion)
-- [Backtracking](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/Amazon-SDE-Test-Series/DSA/Backtracking)
+- [Backtracking](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/main/DSA-JavaScript/Backtracking)
 - [Dynamic Programming](https://github.com/sjsouvik/Data-Structures-Algorithms/tree/master/DSA/Dynamic%20Programming)
 
 ## Support
