@@ -45,6 +45,33 @@ class Solution {
    * @param {Interval[]} intervals
    * @returns {number}
    */
+
+  /*
+  
+  The idea is to take all start times and end times into separate arrays, sort them. 
+  Next, have 2 pointers(startedMeeting, endedMeeting) pointing to the starting index 
+  of the start times and end times array respectively. We'll iterate through the start 
+  times and end times, select the minimum of the current start time and end time - 
+  
+  if we select a start time that means a meeting will start, ongoing meeting count will 
+  be incremented in that case and we'll move to the next start time.
+
+  If we select an end time after comparing the current start time and end time that 
+  means a meeting will end, ongoing meeting count will be decreased in that case 
+  and we'll move to the next end time.
+  
+  If both the current start and end time are equal, then we'll select end time because 
+  before starting a new meeting at the same time, we would end a meeting to keep the 
+  ongoing meeting count minimum. The max number of ongoing meeting would be the answer 
+  of this problem.
+
+  Time & Space Complexity:
+  Time complexity: O(nlogn)
+  Space complexity: O(n)
+
+
+  */
+
   minMeetingRooms(intervals) {
     const startTimes = intervals
       .map((interval) => interval.start)
