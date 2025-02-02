@@ -52,7 +52,7 @@ function findPages(arr, k) {
   while (low <= high) {
     mid = low + Math.floor((high - low) / 2);
 
-    if (this.isValid(arr, mid, k)) {
+    if (isValid(arr, mid, k)) {
       result = mid;
       high = mid - 1;
     } else {
@@ -67,12 +67,12 @@ function isValid(arr, maxPages, k) {
   let pagesToRead = 0,
     student = 1;
 
-  for (let i = 0; i < arr.length; i++) {
-    pagesToRead += arr[i];
+  for (const item of arr) {
+    pagesToRead += item;
 
     if (pagesToRead > maxPages) {
       student++;
-      pagesToRead = arr[i];
+      pagesToRead = item;
 
       if (student > k) {
         return false;
