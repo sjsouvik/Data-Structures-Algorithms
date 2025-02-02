@@ -35,6 +35,15 @@ intervals[i].length == 2
 ********************************************************Solution***************************************************/
 /*
 
+The idea is to sort the intervals based on the start time in ascending order and 
+start iterating the intervals to compare with the previous intervals's end time 
+to find out if there's any overlap.
+
+If there's no overlap, we update the previous interval's end time with the current 
+interval's end time. If the current interval overlaps with the previous interval, 
+then the interval with the larger end time needs to be deleted.
+
+
 Time complexity: O(nlogn)
 Space complexity: O(1) or O(n) depending on the sorting algorithm.
 

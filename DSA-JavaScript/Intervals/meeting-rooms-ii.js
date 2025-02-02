@@ -48,7 +48,7 @@ class Solution {
 
   /*
   
-  The idea is to take all start times and end times into separate arrays, sort them. 
+  The idea is to take all start times and end times into separate arrays, sort them in ascending order. 
   Next, have 2 pointers(startedMeeting, endedMeeting) pointing to the starting index 
   of the start times and end times array respectively. We'll iterate through the start 
   times and end times, select the minimum of the current start time and end time - 
@@ -65,7 +65,6 @@ class Solution {
   ongoing meeting count minimum. The max number of ongoing meeting would be the answer 
   of this problem.
 
-  Time & Space Complexity:
   Time complexity: O(nlogn)
   Space complexity: O(n)
 
