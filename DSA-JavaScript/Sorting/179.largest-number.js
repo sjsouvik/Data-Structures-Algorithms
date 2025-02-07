@@ -21,7 +21,7 @@ Constraints:
 1 <= nums.length <= 100
 0 <= nums[i] <= 10^9
 
-************************************************************Solution*********************************************************/
+******************************************************Solution*****************************************************/
 
 /**
  * @param {number[]} nums
@@ -35,7 +35,10 @@ const largestNumber = function (nums) {
     nums[i] = String(nums[i]);
   }
 
-  /* Sort the array in such a way that if there're 2 numbers 'a', 'b' which can be used to form 2 numbers (ab) or, (ba) and if Number(ab) > Number(ba), then we'll place the 'a' in the array later than 'b', so that when we form the number by traversing the array from the end, 'a' will be appended first in the result than 'b' */
+  /* Sort the array in such a way that if there're 2 numbers 'a', 'b' which can be used to form 2 numbers 
+  (ab) or, (ba) and if Number(ab) > Number(ba), then we'll place the 'a' in the array later than 'b', so 
+  that when we form the number by traversing the array from the end, 'a' will be appended first in the 
+  result than 'b' */
   const sortedNums = nums.sort((a, b) => {
     const n1 = Number(a + b);
     const n2 = Number(b + a);
@@ -56,7 +59,8 @@ const largestNumber = function (nums) {
     result += sortedNums[i];
   }
 
-  /* if '0' is the 1st character in the result, that means all the characters after that are less than or equal to that, so return '0' in that case */
+  /* if '0' is the 1st character in the result, that means all the characters after that are less 
+  than or equal to that, so return '0' in that case */
   if (result[0] === "0") {
     return result[0];
   }

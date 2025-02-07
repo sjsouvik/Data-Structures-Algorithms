@@ -32,6 +32,19 @@ s consists of only uppercase English letters.
 
 /*
 
+The idea is to find a substring that follows the following condition:
+(the length of the substring - count of max frequent character in the substring <= k), 
+
+where (the length of the substring - count of max frequent character in the substring) is the count of characters 
+that we need to replace to make all characters same in the substring
+
+
+if the above condition is true then only we can replace the other characters with the max frequent 
+character to make all the characters in the substring same.
+
+If the condition doesn't satisfy for a substring, we have to remove the characters from the substring 
+from the beginning until it satisfies the condition again.
+
 Time complexity: O(n)
 Space complexity: O(m)
 Where n is the length of the string and m is the total number of unique characters in the string.
