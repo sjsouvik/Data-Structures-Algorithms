@@ -1,6 +1,7 @@
 /*
 
-Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such 
+that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
 Notice that the solution set must not contain duplicate triplets.
 
@@ -43,41 +44,30 @@ Constraints:
 
 // 2 pointers approach
 
-var threeSum = function(nums) {
-    const target = 0, result = [];        
-    
-    nums = nums.sort((a, b) => a - b);        
-    
-    for(let i = 0; i < nums.length - 2; i++){
-        if(i === 0 || (i > 0 && nums[i] !== nums[i - 1])){            
-            let startIndex = i + 1, endIndex = nums.length - 1, restOfTheTarget = target - nums[i], sum;
+const threeSum = (nums) => {
+  nums = nums.sort((a, b) => a - b);
+  const target = 0,
+    result = new Set();
 
-            while(startIndex < endIndex){
-                sum = nums[startIndex] + nums[endIndex];
-                
-                if(sum === restOfTheTarget){
-                    result.push([nums[i], nums[startIndex], nums[endIndex]]);
+  for (let i = 0; i < nums.length - 2; i++) {
+    let left = i + 1,
+      right = nums.length - 1,
+      sum;
 
-                    // to avoid duplicates
-                    while(nums[startIndex] === nums[startIndex + 1]){
-                        startIndex++;
-                    } 
-                    
-                    // to avoid duplicates
-                    while(nums[endIndex] === nums[endIndex - 1]){
-                        endIndex--;
-                    }
+    while (left < right) {
+      sum = nums[i] + nums[left] + nums[right];
 
-                    startIndex++; 
-                    endIndex--; 
-                }else if(sum < restOfTheTarget){
-                    startIndex++;
-                }else{
-                    endIndex--;
-                }
-            }
-        }        
+      if (sum === target) {
+        result.add(JSON.stringify([nums[i], nums[left], nums[right]]));
+        left++;
+        right--;
+      } else if (sum > target) {
+        right--;
+      } else {
+        left++;
+      }
     }
-        
-    return result;
+  }
+
+  return Array.from(result).map((ans) => JSON.parse(ans));
 };
