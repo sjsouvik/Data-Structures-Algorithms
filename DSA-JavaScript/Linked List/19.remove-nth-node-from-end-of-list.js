@@ -42,8 +42,8 @@ The number of nodes in the list is sz.
  */
 const removeNthFromEnd = function (head, n) {
   let current = head,
-    length = 1;
-  while (current.next) {
+    length = 0;
+  while (current) {
     current = current.next;
     length++;
   }
